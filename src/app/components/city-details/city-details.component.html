@@ -1,0 +1,60 @@
+<div *ngIf="(city$|async)" class="details-page__wrapper">
+    <div class="background-gradient__circle"></div>
+
+    <section class="main-weather__card">
+        <section class="card-header__container-dark">
+            <img class="city__illustration" [src]="cityIllustrationPath" />
+            <div class="header-content__wrapper">
+                <mat-icon>favorite_border</mat-icon>
+                <mat-icon>favorite</mat-icon>
+                <div class="today-weather__container">
+                    <!--{{today}}-->
+                    <div class="temp-state__container">
+                        <span class="temperature__text">{{(city$|async).Temperature.Metric.Value}}°</span>
+                        <span class="weather-state__text">{{(city$|async).WeatherText}}</span>
+                    </div>
+                </div>
+                <svg class="forecast-condition__icon" viewBox="2050 -845 262 262">
+                    <circle cx="131" cy="131" r="131" fill="#ffde17" data-name="Sun Icon"
+                        transform="translate(2050 -845)" />
+                </svg>
+                <div class="city-name__container">
+                    <div class="city-name__underline">
+                        <span class="city-name__text">{{(city$|async).name}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <main *ngIf="(daysWeather$|async)" class="body-content__wrapper">
+            <section class="forecast__container">
+                <div *ngFor="let day of (daysWeather$|async).DailyForecasts" class="day-weather__container">
+                    <span class="day-name__text">{{day.Date|date:'EEEE'}}</span>
+                    <svg class="forecast-condition__icon" viewBox="2050 -845 262 262">
+                        <circle cx="131" cy="131" r="131" fill="#ffde17" data-name="Sun Icon"
+                            transform="translate(2050 -845)" />
+                    </svg>
+                    <section class="min-max__container">
+                        <div class="min__container">
+                            <svg class="min-arrow__icon" viewBox="188.5 807 21 21">
+                                <path fill="#00ff9b" d="M209.5 817.5h-21L199 828z" data-name="Min Arrow" />
+                            </svg>
+                            <span class="min-temperature__text">{{ day.Temperature.Minimum.Value }}</span>
+                            <span class="min__text">Min</span>
+                        </div>
+                        <div class="max__container">
+                            <svg class="max-arrow__icon" viewBox="449.5 820 21 21">
+                                <path fill="red" d="M449.5 830.5h21L460 820z" data-name="Max Arrow" />
+                            </svg>
+                            <span class="max-temperature__text">{{ day.Temperature.Maximum.Value }}</span>
+                            <span class="max__text">Max</span>
+                        </div>
+                    </section>
+                </div>
+
+
+            </section>
+        </main>
+    </section>
+</div>
+
+{{daysWeather$}}
