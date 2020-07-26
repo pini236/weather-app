@@ -74,39 +74,38 @@
   z-index: 2;
   color: white;
   top: 3rem;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(2, 1fr);
   width: 100%;
 }
 
 .temperature__text {
-  font-size: 6rem;
-  letter-spacing: 0.75rem;
+  letter-spacing: 0.3rem;
+    font-size: 5rem;
+    text-align: center;
 }
 
 .city-name__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 25%;
+  
 }
 
-.city-name__underline {
-  background: transparent;
+.city-name__line {
+  border: 3px solid white;
   border-radius: 5px;
-  height: 5px;
-  box-shadow: 0 3rem 0 0 #ffffff;
+  margin: 0 30%;
+
 }
 
 .city-name__text {
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   font-size: 1.75rem;
-  padding-bottom: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 .today-weather__container {
+  flex: 1;
   align-self: center;
   justify-self: center;
   display: grid;
@@ -128,6 +127,7 @@
   font-size: 1.15rem;
   text-transform: uppercase;
   margin-top: 0.25rem;
+  text-align: center;
 }
 
 .hum-wind__container {
@@ -364,7 +364,7 @@
 
 .min__container,
 .max__container {
-  margin: 1rem 3rem;
+  margin: 1rem 1rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
@@ -399,3 +399,32 @@
   font-size: 2rem;
 }
 
+.weather-icon__container {
+  margin: 2.5% 44%;
+}
+
+.weather-icon__container > svg {
+  width: 10rem;
+}
+.city-favorite{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0% 5%;
+
+}
+@media screen and (max-width: 959px) {
+
+    .day-weather__container {
+       margin: 15%;
+  
+    }
+    .weather-icon__container{
+      margin: 2rem 5rem;
+  }
+
+.city-name__line {
+  margin: 0 20%;
+
+}
+ 
+}

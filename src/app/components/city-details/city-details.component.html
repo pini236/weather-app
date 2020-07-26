@@ -5,8 +5,12 @@
         <section class="card-header__container-dark">
             <img class="city__illustration" [src]="cityIllustrationPath" />
             <div class="header-content__wrapper">
-                <mat-icon *ngIf="isFavoriteCity()" (click)="deleteFavorite()">favorite_border</mat-icon>
-                <mat-icon *ngIf="!isFavoriteCity()" (click)="addFavorite()">favorite</mat-icon>
+     
+                <div class="city-favorite">
+                    <mat-icon *ngIf="isFavoriteCity()" (click)="deleteFavorite()">favorite_border</mat-icon>
+                    <mat-icon *ngIf="!isFavoriteCity()" (click)="addFavorite()">favorite</mat-icon>
+                </div>
+
                 <div class="today-weather__container">
                     <!--{{today}}-->
                     <div class="temp-state__container">
@@ -19,13 +23,27 @@
                         transform="translate(2050 -845)" />
                 </svg>
                 <div class="city-name__container">
-                    <div class="city-name__underline">
-                        <span class="city-name__text">{{(city$|async).name}}</span>
+                    <span class="city-name__text">{{(city$|async).name}}</span>
+                </div>
+
+                <hr class="city-name__line" />
+                <div class="weather-icon__container">
+                    <svg viewBox="2050 -845 262 262">
+                        <circle cx="131" cy="131" r="131" fill="#ffde17" data-name="Sun Icon"
+                            transform="translate(2050 -845)" />
+                    </svg>
+                </div>
+                <div class="today-weather__container">
+                    <!--{{today}}-->
+                    <div class="temp-state__container">
+                        <div class="temperature__text">{{(city$|async).Temperature.Metric.Value}}°</div>
+                        <div class="weather-state__text">{{(city$|async).WeatherText}}</div>
                     </div>
                 </div>
+
             </div>
         </section>
-        <main *ngIf="(daysWeather$|async)" class="body-content__wrapper">
+        <main *ngIf="(daysWeather$|async)">
             <section class="forecast__container">
                 <div *ngFor="let day of (daysWeather$|async).DailyForecasts" class="day-weather__container">
                     <span class="day-name__text">{{day.Date|date:'EEEE'}}</span>
@@ -55,4 +73,5 @@
             </section>
         </main>
     </section>
+   
 </div>
