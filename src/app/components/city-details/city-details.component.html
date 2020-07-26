@@ -6,12 +6,12 @@
             <img class="city__illustration" [src]="cityIllustrationPath" />
             <div class="header-content__wrapper">
                 <div class="city-favorite">
-                    <mat-icon *ngIf="isFavoriteCity()" (click)="deleteFavorite()">favorite_border</mat-icon>
-                    <mat-icon *ngIf="!isFavoriteCity()" (click)="addFavorite()">favorite</mat-icon>
+                    <mat-icon *ngIf="!isFavoriteCity()" (click)="addFavorite()">favorite_border</mat-icon>
+                    <mat-icon *ngIf="isFavoriteCity()" (click)="deleteFavorite()">favorite</mat-icon>
                 </div>
 
                 <div class="city-name__container">
-                    <span class="city-name__text">{{(city$|async).name}}</span>
+                    <span class="city-name__text">{{(city$|async).LocalizedName}}</span>
                 </div>
 
                 <hr class="city-name__line" />

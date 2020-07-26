@@ -40,7 +40,7 @@ export class CityDetailsComponent extends BaseComponent<{ city: City, daysWeathe
     });
     this.city$.subscribe((res) => {
       if (!res) {
-        this.store.dispatch(CitiesActions.getCity({ payload: { locationKey: '215854', name: 'tel aviv' } }))
+        this.store.dispatch(CitiesActions.getCity({ payload: { Key: '215854', LocalizedName: 'tel aviv' } }))
       } else {
         this.selectedCity = res;
       }
@@ -56,17 +56,13 @@ export class CityDetailsComponent extends BaseComponent<{ city: City, daysWeathe
     this.today = days[todayNumberInWeek];
   }
   isFavoriteCity(): boolean {
-    console.log(this.selectedCity);
-    console.log(this.favorites);
-    console.log(_.find(this.favorites, { locationKey: this.selectedCity.locationKey }));
-
-    return _.find(this.favorites, { locationKey: this.selectedCity.locationKey });
+    return _.find(this.favorites, { Key: this.selectedCity.Key });
   }
   addFavorite() {
     this.store.dispatch(FavoritesActions.AddFavorite({ payload: this.selectedCity }))
   }
   deleteFavorite() {
-    this.store.dispatch(FavoritesActions.DeleteFavorite({ cityKey: this.selectedCity.locationKey }))
+    this.store.dispatch(FavoritesActions.DeleteFavorite({ cityKey: this.selectedCity.Key }))
   }
 
   ngOnDestroy() {

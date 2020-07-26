@@ -14,70 +14,30 @@ import * as CitiesActions from '../../state/cities/cities.actions';
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent extends BaseComponent<{ cities: City[] }> implements OnInit {
-  cities$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-cityControl = new FormControl();
-searchCities(keyword: string) {
-  let url: string =
-    'https://restcountries.eu/rest/v2/capital/' + keyword;
-  if (keyword) {
-    this.http.get(url).subscribe((res: Array<any>) => {
-      this.cities$.next(res.map(c => c.capital));
-    })
-  } else {
+  cities$: Observable<City[]> = this.store.pipe(select('cities'));
+  cityControl = new FormControl();
+  searchCities(keyword: string) {
+    if (keyword)
+      this.store.dispatch(CitiesActions.getCities({ query: keyword }));
+
   }
-}
-capitals = [];
-selectedCity = '';
-selectCity(city) {
-  if (this.capitals.includes(city)) {
-  } else if (city.leading > 0) {
+  capitals = [];
+  selectedCity = '';
+  selectCity(city) {
+    this.store.dispatch(CitiesActions.getCity({ payload: city }));
   }
-}
 
 
 
-// myControl = new FormControl();
-// options: string[] = ['One', 'Two', 'Three'];
-// cities$: Observable<City[]>;
-// query: string
-ngOnInit(): void {
-  this.cityControl.valueChanges.pipe(debounceTime(1000))
-    .subscribe(newValue => {
-      this.selectedCity = newValue
-      this.searchCities(this.selectedCity)
-    });
-  // this.http.get('https://restcountries.eu/rest/v2/all').pipe((first())).subscribe((countries: Array<any>) => {
-  //   countries.forEach((country: any) => {
-  //     if (country.capital.length) {
-  //       this.capitals.push(country.capital);
-  //     }
-  //   });
-  //   this.capitals.sort();
-  // });
-
-
-
-  // this.filteredOptions = this.myControl.valueChanges
-  //   .pipe(
-  //     startWith(''),
-  //     map(value => this._filter(value))
-  //   );
-  // this.cities$ = this.store.pipe(select('cities'));
-}
+  ngOnInit(): void {
+    this.cityControl.valueChanges.pipe(debounceTime(1000))
+      .subscribe(newValue => {
+        this.selectedCity = newValue
+        this.searchCities(this.selectedCity)
+      });
+  }
 
   // searchCities() {
   //   this.store.dispatch(CitiesActions.getCities({ query: this.query }));
   // }
-
-
-
-
-  // filteredOptions: Observable<string[]>;
-
-  // private _filter(value: string): string[] {
-  //   const filterValue = value.toLowerCase();
-
-  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  // }
-
 }

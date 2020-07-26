@@ -1,6 +1,6 @@
 export interface City {
-    locationKey: string;
-    name: string;
+    Key: string;
+    LocalizedName: string;
     Temperature?: Temperature;
     WeatherText?: string
 }

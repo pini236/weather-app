@@ -9,7 +9,9 @@
   padding: 2rem 0;
   width: 100vw;
 }
-
+.mat-icon {
+  cursor: pointer;
+}
 .details-page__wrapper-dark {
   background: linear-gradient(#fc7db8, #495cfc);
 }
@@ -79,22 +81,20 @@
 
 .temperature__text {
   letter-spacing: 0.3rem;
-    font-size: 5rem;
-    text-align: center;
+  font-size: 5rem;
+  text-align: center;
 }
 
 .city-name__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .city-name__line {
   border: 3px solid white;
   border-radius: 5px;
   margin: 0 30%;
-
 }
 
 .city-name__text {
@@ -182,7 +182,7 @@
 .forecast__container {
   display: flex;
   flex-flow: row;
-  margin-left: 1rem;
+  margin-left: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -274,7 +274,7 @@
 .day-weather__container {
   display: flex;
   flex-flow: column;
-  margin: 2rem 1.5rem;
+  margin: 2rem 0rem;
   justify-content: center;
   align-items: center;
 }
@@ -380,51 +380,47 @@
   margin-bottom: -0.05rem;
 }
 
-
 .max__text {
-  color: #FF0070;
+  color: #ff0070;
 }
 
 .min__text {
-  color: #00FF9B;
+  color: #00ff9b;
 }
 
-.max__text, .min__text {
+.max__text,
+.min__text {
   font-size: 1rem;
   text-align: center;
 }
 
-.max-temperature__text, .min-temperature__text {
+.max-temperature__text,
+.min-temperature__text {
   text-align: center;
   font-size: 2rem;
 }
 
 .weather-icon__container {
-  margin: 3% 44%;
+  margin: 2.5% 41.5%;
 }
 
 .weather-icon__container > svg {
   width: 10rem;
 }
-.city-favorite{
+.city-favorite {
   display: flex;
   justify-content: flex-end;
   margin: 0% 5%;
-
 }
 @media screen and (max-width: 959px) {
-
-    .day-weather__container {
-       margin: 15%;
-  
-    }
-    .weather-icon__container{
-      margin: 2rem 5rem;
+  .day-weather__container {
+    margin: 7%;
+  }
+  .weather-icon__container {
+    margin: 2rem 5rem;
   }
 
-.city-name__line {
-  margin: 0 20%;
-
-}
- 
+  .city-name__line {
+    margin: 0 20%;
+  }
 }

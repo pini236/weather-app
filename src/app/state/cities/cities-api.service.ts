@@ -15,7 +15,7 @@ export class CitiesApiService {
     return this.httpclient.get<City[]>(
       `${apiEndpoints.baseUrl.primaryEndpoint}/${apiEndpoints.cities.primaryEndpoint}/v1/${apiEndpoints.cities.secondaryEndpoint}/${apiEndpoints.cities.thirdEndpoint}?apikey=${this.apiKey}&q=${query}`);
   }
-  getCity(locationKey: string): Observable<City> {
-    return this.httpclient.get<City>(`${apiEndpoints.baseUrl.primaryEndpoint}/${apiEndpoints.cityWeather.primaryEndpoint}/v1/${locationKey}?apikey=${this.apiKey}`);
+  getCity(Key: string): Observable<City> {
+    return this.httpclient.get<City>(`${apiEndpoints.baseUrl.primaryEndpoint}/${apiEndpoints.cityWeather.primaryEndpoint}/v1/${Key}?apikey=${this.apiKey}`);
   }
 }

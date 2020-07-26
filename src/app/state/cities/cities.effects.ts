@@ -31,7 +31,7 @@ export class CitiesEffects {
     this.action$.pipe(
       ofType(CitiesActions.getCity),
       mergeMap(action =>
-        this.citiesService.getCity(action.payload.locationKey).pipe(
+        this.citiesService.getCity(action.payload.Key).pipe(
           map((data: City) => {
             return CitiesActions.SuccessGetCity({ payload: data });
           }),

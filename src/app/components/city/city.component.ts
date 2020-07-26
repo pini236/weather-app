@@ -24,7 +24,7 @@ export class CityComponent extends BaseComponent<{}> implements OnInit {
   ngOnDestroy() {
   }
   deleteFavorite() {
-    this.store.dispatch(FavoritesActions.DeleteFavorite({ cityKey: this.city.locationKey }));
+    this.store.dispatch(FavoritesActions.DeleteFavorite({ cityKey: this.city.Key }));
   }
 
 }

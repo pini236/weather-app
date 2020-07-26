@@ -3,7 +3,7 @@ import { GetFavorites, AddFavorite, DeleteFavorite } from './favorites.actions';
 import { City } from 'src/app/models/city.interface';
 import * as _ from 'lodash';
 
-export const initialFavoritesState: City[] = [{ name: 'tel aviv', locationKey: '12345', Temperature: { Metric: 33 }, WeatherText: 'Hot' }];
+export const initialFavoritesState: City[] = [];
 
 const _favoritesReducer = createReducer(initialFavoritesState,
   on(GetFavorites, (favorites: City[]) => {
@@ -13,7 +13,7 @@ const _favoritesReducer = createReducer(initialFavoritesState,
     return [...favorites, payload];
   }),
   on(DeleteFavorite, (favorites: City[], { cityKey }) => {
-    return _.filter(favorites, (f: City) => f.locationKey != cityKey)
+    return _.filter(favorites, (f: City) => f.Key != cityKey)
   })
 );
 
