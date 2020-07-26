@@ -5,23 +5,11 @@
         <section class="card-header__container-dark">
             <img class="city__illustration" [src]="cityIllustrationPath" />
             <div class="header-content__wrapper">
-     
                 <div class="city-favorite">
                     <mat-icon *ngIf="isFavoriteCity()" (click)="deleteFavorite()">favorite_border</mat-icon>
                     <mat-icon *ngIf="!isFavoriteCity()" (click)="addFavorite()">favorite</mat-icon>
                 </div>
 
-                <div class="today-weather__container">
-                    <!--{{today}}-->
-                    <div class="temp-state__container">
-                        <span class="temperature__text">{{(city$|async)?.Temperature?.Metric?.Value}}°</span>
-                        <span class="weather-state__text">{{(city$|async).WeatherText}}</span>
-                    </div>
-                </div>
-                <svg class="forecast-condition__icon" viewBox="2050 -845 262 262">
-                    <circle cx="131" cy="131" r="131" fill="#ffde17" data-name="Sun Icon"
-                        transform="translate(2050 -845)" />
-                </svg>
                 <div class="city-name__container">
                     <span class="city-name__text">{{(city$|async).name}}</span>
                 </div>
@@ -36,7 +24,7 @@
                 <div class="today-weather__container">
                     <!--{{today}}-->
                     <div class="temp-state__container">
-                        <div class="temperature__text">{{(city$|async).Temperature.Metric.Value}}°</div>
+                        <div class="temperature__text">{{(city$|async)?.Temperature?.Metric?.Value}}°</div>
                         <div class="weather-state__text">{{(city$|async).WeatherText}}</div>
                     </div>
                 </div>
@@ -73,5 +61,5 @@
             </section>
         </main>
     </section>
-   
+
 </div>
