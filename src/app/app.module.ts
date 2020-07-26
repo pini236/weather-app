@@ -25,6 +25,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { BaseComponent } from './components/base/base.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { favoritesReducer } from './state/favorites/favorites.reducer';
+import { layoutReducer } from './state/layout/layout.reducer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { favoritesReducer } from './state/favorites/favorites.reducer';
         cities: citiesReducer,
         city: cityReducer,
         daysWeather: daysWeatherReducer,
-        favorites: favoritesReducer
+        favorites: favoritesReducer,
+        appMode: layoutReducer
       }),
     EffectsModule.forRoot([CitiesEffects, DaysWeatherEffects]),
     BrowserAnimationsModule

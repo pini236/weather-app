@@ -1,5 +1,5 @@
-<div *ngIf="(city$|async)" class="details-page__wrapper">
-    <div class="background-gradient__circle"></div>
+<div *ngIf="(city$|async)" class="details-page__wrapper" [ngClass]="{'details-page__wrapper-dark': true }">
+    <div class="background-gradient__circle" [ngClass]="{'background-gradient__circle-dark': (appMode$|async)}"></div>
 
     <section class="main-weather__card">
         <section class="card-header__container-dark">
@@ -51,7 +51,8 @@
                             <circle cx="131" cy="131" r="131" fill="#ffde17" data-name="Sun Icon"
                                 transform="translate(2050 -845)" />
                         </svg>
-                        <svg  class="forecast-condition__icon" *ngSwitchCase="(day.Temperature.Minimum.Value+day.Temperature.Maximum.Value)/2 < 25"
+                        <svg class="forecast-condition__icon"
+                            *ngSwitchCase="(day.Temperature.Minimum.Value+day.Temperature.Maximum.Value)/2 < 25"
                             viewBox="2436.9 -843.1 275.5 274.1">
                             <g data-name="cloudy icon" transform="translate(84 790)">
                                 <circle cx="137" cy="137" r="137" fill="#fff" data-name="Ellipse 23"

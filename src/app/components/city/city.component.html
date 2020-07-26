@@ -1,4 +1,4 @@
-<section class="weather__card">
+<section class="weather__card" [ngClass]="{'weather__card-dark':  (appMode$|async)}">
     <mat-icon (click)="deleteFavorite()">favorite</mat-icon>
 
     <span class="city-name__text">{{city.LocalizedName}} - ({{city?.Country?.LocalizedName}})</span>

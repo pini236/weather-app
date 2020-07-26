@@ -9,12 +9,14 @@ import * as CitiesActions from '../../state/cities/cities.actions';
 import * as FavoritesActions from '../../state/favorites/favorites.actions';
 import * as DayWeatherActions from '../../state/days-weather/days-weather.actions';
 import * as _ from 'lodash';
+import { eAppMode } from 'src/app/enums/app-mode.enum';
 @Component({
   selector: 'city-details',
   templateUrl: './city-details.component.html',
   styleUrls: ['./city-details.component.scss']
 })
-export class CityDetailsComponent extends BaseComponent<{ city: City, daysWeather: any, favorites: City[] }> implements OnInit {
+export class CityDetailsComponent extends BaseComponent<{ city: City, daysWeather: any, favorites: City[], appMode: eAppMode }> implements OnInit {
+  appMode$: Observable<eAppMode>;
 
   darkMode: boolean;
   city$: Observable<City>;
@@ -34,6 +36,7 @@ export class CityDetailsComponent extends BaseComponent<{ city: City, daysWeathe
   tweets$: Observable<any>;
 
   ngOnInit() {
+    this.appMode$ = this.store.pipe(select('appMode'));
     this.city$ = this.store.pipe(select('city'));
     this.store.pipe(select('favorites')).subscribe((res) => {
       this.favorites = res;
