@@ -1,5 +1,7 @@
-<section class="weather__card" (click)="openDetails()">
-    <span class="city-name__text">{{cityName}}</span>
+<section class="weather__card">
+    <mat-icon (click)="deleteFavorite()">favorite</mat-icon>
+
+    <span class="city-name__text">{{city.name}}</span>
     <div class="weather-icon__container">
         <svg viewBox="2050 -845 262 262">
             <circle cx="131" cy="131" r="131" fill="#ffde17" data-name="Sun Icon" transform="translate(2050 -845)" />
@@ -7,8 +9,8 @@
     </div>
     <div class="temperature-text__container">
         <span class="temperature__text">{{ citesWeather ||''}}</span>
-        <span class="temperature-metric__text">{{ temp||'25' }}°</span>
-        <span class="weather-condition__text">{{ state||'Clear' }}</span>
+        <span class="temperature-metric__text">{{ city.Temperature?.Metric?.Value }}°</span>
+        <span class="weather-condition__text">{{ city.WeatherText}}</span>
     </div>
     <section class="min-max__container">
         <div class="min__container">

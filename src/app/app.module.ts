@@ -24,6 +24,7 @@ import { CityDetailsComponent } from './components/city-details/city-details.com
 import { LayoutComponent } from './components/layout/layout.component';
 import { BaseComponent } from './components/base/base.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { favoritesReducer } from './state/favorites/favorites.reducer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,7 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
         cities: citiesReducer,
         city: cityReducer,
         daysWeather: daysWeatherReducer,
-
+        favorites: favoritesReducer
       }),
     EffectsModule.forRoot([CitiesEffects, DaysWeatherEffects]),
     BrowserAnimationsModule

@@ -1,9 +1,4 @@
 <div class="main__container">
-
-<city></city>
-<city></city>
-<city></city>
-<city></city>
-<city></city>
-<city></city>
+    <city [city]="favorite" *ngFor="let favorite of (favorite$|async)"></city>
+    <h2 *ngIf="(favorite$|async)?.length <= 0">No favorites were found</h2>
 </div>

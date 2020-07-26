@@ -5,12 +5,12 @@
         <section class="card-header__container-dark">
             <img class="city__illustration" [src]="cityIllustrationPath" />
             <div class="header-content__wrapper">
-                <mat-icon>favorite_border</mat-icon>
-                <mat-icon>favorite</mat-icon>
+                <mat-icon *ngIf="isFavoriteCity()" (click)="deleteFavorite()">favorite_border</mat-icon>
+                <mat-icon *ngIf="!isFavoriteCity()" (click)="addFavorite()">favorite</mat-icon>
                 <div class="today-weather__container">
                     <!--{{today}}-->
                     <div class="temp-state__container">
-                        <span class="temperature__text">{{(city$|async).Temperature.Metric.Value}}°</span>
+                        <span class="temperature__text">{{(city$|async)?.Temperature?.Metric?.Value}}°</span>
                         <span class="weather-state__text">{{(city$|async).WeatherText}}</span>
                     </div>
                 </div>
@@ -56,5 +56,3 @@
         </main>
     </section>
 </div>
-
-{{daysWeather$}}
