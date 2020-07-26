@@ -9,7 +9,7 @@ import { CityWeather } from 'src/app/models/city-weather.interface';
   providedIn: 'root'
 })
 export class DaysWeatherService {
-  private apiKey = '0Y6FMASbFNJCjbGlk7pjLfunggL9ToHN';
+  private apiKey = '3GomDBNeuUGbaYW3h5zGL24NKmdImjSw';
   constructor(private httpclient: HttpClient) { }
   getCityWeatherDays(key: string): Observable<any[]> {
     return this.httpclient.get<any[]>(

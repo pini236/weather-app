@@ -40,23 +40,20 @@ export class CityDetailsComponent extends BaseComponent<{ city: City, daysWeathe
     });
     this.city$.subscribe((res) => {
       if (!res) {
-        this.store.dispatch(CitiesActions.getCity({ payload: { Key: '215854', LocalizedName: 'tel aviv' } }))
+        this.selectedCity = { Key: '215854', LocalizedName: 'tel aviv', Country: { LocalizedName: 'Israel' } };
+        this.store.dispatch(CitiesActions.getCity({ payload: this.selectedCity }));
       } else {
         this.selectedCity = res;
+        this.store.dispatch(DayWeatherActions.GetCityWeatherDays({ key: this.selectedCity?.Key }))
       }
     })
     this.daysWeather$ = this.store.pipe(select('daysWeather'));
-    this.daysWeather$.subscribe((res) => {
-      if (!res) {
-        this.store.dispatch(DayWeatherActions.GetCityWeatherDays({ key: '215854' }));
-      }
-    })
     const todayNumberInWeek = new Date().getDay();
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     this.today = days[todayNumberInWeek];
   }
   isFavoriteCity(): boolean {
-    return _.find(this.favorites, { Key: this.selectedCity.Key });
+    return _.find(this.favorites, { Key: this.selectedCity?.Key });
   }
   addFavorite() {
     this.store.dispatch(FavoritesActions.AddFavorite({ payload: this.selectedCity }))
