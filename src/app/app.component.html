@@ -1,24 +1,24 @@
 <!-- Slide Menu-->
 <main class="root__container" [ngClass]="{'root__container-dark': (appMode$|async)}">
-    <header class="main__header" [ngClass]="{'main__header-dark': (appMode$|async)}">
-        <div class="left__section">
-            <mat-button-toggle-group style="width:50vh; margin:1%">
-                <mat-button-toggle style="width:100%" routerLink="/home">Home</mat-button-toggle>
-                <mat-button-toggle style="width:100%" routerLink="/favorites">Favorites</mat-button-toggle>
-            </mat-button-toggle-group>
-        </div>
-        <div class="mode-toggle__container">
-            <span class="mode-toggle__text">Light</span>
-
-            <label class="toggle-button__container">
-                <input (click)="modeToggleSwitch()" type="checkbox" class="mode-toggle__input" />
-                <span [ngClass]="{'mode-toggle__bg-checked': (appMode$|async)}" class="mode-toggle__bg"></span>
-                <span [ngClass]="{'mode-toggle__circle-checked': (appMode$|async)}" class="mode-toggle__circle"></span>
-            </label>
-            <span class="mode-toggle__text">Dark</span>
-        </div>
-    </header>
-    <div class="main-container__bg">
-        <router-outlet></router-outlet>
+  <header class="main__header" [ngClass]="{'main__header-dark': (appMode$|async)}">
+    <div class="left__section">
+      <mat-button-toggle-group class="light" [ngClass]="{'dark':(appMode$|async)}">
+        <mat-button-toggle routerLink="/home">Home</mat-button-toggle>
+        <mat-button-toggle routerLink="/favorites">Favorites</mat-button-toggle>
+      </mat-button-toggle-group>
     </div>
+    <div class="mode-toggle__container">
+      <span class="mode-toggle__text">Light</span>
+
+      <label class="toggle-button__container">
+        <input (click)="modeToggleSwitch()" type="checkbox" class="mode-toggle__input" />
+        <span [ngClass]="{'mode-toggle__bg-checked': (appMode$|async)}" class="mode-toggle__bg"></span>
+        <span [ngClass]="{'mode-toggle__circle-checked': (appMode$|async)}" class="mode-toggle__circle"></span>
+      </label>
+      <span class="mode-toggle__text">Dark</span>
+    </div>
+  </header>
+  <div class="main-container__bg">
+    <router-outlet></router-outlet>
+  </div>
 </main>

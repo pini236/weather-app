@@ -8,13 +8,15 @@ import { City } from 'src/app/models/city.interface';
 import { BaseComponent } from '../base/base.component';
 import { select } from '@ngrx/store';
 import * as CitiesActions from '../../state/cities/cities.actions';
+import { eAppMode } from 'src/app/enums/app-mode.enum';
 @Component({
   selector: 'auto-complete',
   templateUrl: './auto-complete.component.html',
   styleUrls: ['./auto-complete.component.scss']
 })
-export class AutoCompleteComponent extends BaseComponent<{ cities: City[] }> implements OnInit {
+export class AutoCompleteComponent extends BaseComponent<{ cities: City[], appMode: eAppMode }> implements OnInit {
   cities$: Observable<City[]> = this.store.pipe(select('cities'));
+  appMode$: Observable<eAppMode> = this.store.pipe(select('appMode'));
   cityControl = new FormControl();
   searchCities(keyword: string) {
     if (keyword)
