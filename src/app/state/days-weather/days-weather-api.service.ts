@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { City } from '../../models/city.interface';
 import { apiEndpoints } from 'src/app/consts/weather-api-endpoints.const';
 import { CityWeather } from 'src/app/models/city-weather.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DaysWeatherService {
-  private apiKey = '3GomDBNeuUGbaYW3h5zGL24NKmdImjSw';
+  private apiKey = environment.apiKey;
   constructor(private httpclient: HttpClient) { }
   getCityWeatherDays(key: string): Observable<any[]> {
     return this.httpclient.get<any[]>(
